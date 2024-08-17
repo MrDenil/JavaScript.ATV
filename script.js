@@ -1,18 +1,13 @@
 function maiorMenor() {
-    // Obtém os valores do formulário
-    let valores = [];
-    valores.push(parseInt(document.getElementById("valor1").value));
-    valores.push(parseInt(document.getElementById("valor2").value));
-    valores.push(parseInt(document.getElementById("valor3").value));
-    valores.push(parseInt(document.getElementById("valor4").value));
-    valores.push(parseInt(document.getElementById("valor5").value));
+    // Obtém os valores do campo "numeros", separa e converte em números
+    let valores = document.getElementById("numeros").value.split(',').map(Number);
 
     // Encontra o maior e o menor valor
     let maior = Math.max(...valores);
     let menor = Math.min(...valores);
 
     // Exibe o resultado
-    document.getElementById("resultado").innerHTML = "Maior valor: " + maior + "<br>Menor valor: " + menor;
+    document.getElementById("resultado1").innerHTML = "Maior valor: " + maior + "<br>Menor valor: " + menor;
 }
 
 function verificarVogal() {
@@ -26,12 +21,12 @@ function verificarVogal() {
     let resultado = vogais.includes(caractere) ? 1 : 0;
 
     // Exibe o resultado
-    document.getElementById("vogalResultado").innerHTML = resultado === 1 ? "(1) É uma vogal!" : "(0) Não é uma vogal.";
+    document.getElementById("resultado2").innerHTML = resultado === 1 ? "(1) É uma vogal!" : "(0) Não é uma vogal.";
 }
 
-function calcularLimites() {
-    let li = parseInt(document.getElementById("limiteInferior").value);
-    let ls = parseInt(document.getElementById("limiteSuperior").value);
+function numerosPares() {
+    let li = parseInt(document.getElementById("li").value);
+    let ls = parseInt(document.getElementById("ls").value);
 
     let numerosPares = [];
     let somaPares = 0;
@@ -43,44 +38,27 @@ function calcularLimites() {
         }
     }
 
-    document.getElementById("limitesResultado").innerHTML = 
+    document.getElementById("resultado3").innerHTML = 
         "Números Pares: " + numerosPares.join(", ") + "<br>Somatório: " + somaPares;
 }
 
-// Função para mostrar o formulário com base na escolha do usuário
-function mostrarFormulario() {
-    let escolha = document.getElementById("funcaoSelect").value;
-
-    document.getElementById("maiorMenorForm").style.display = "none";
-    document.getElementById("vogalForm").style.display = "none";
-    document.getElementById("limitesForm").style.display = "none";
-
-    if (escolha === "maiorMenor") {
-        document.getElementById("maiorMenorForm").style.display = "block";
-    } else if (escolha === "vogal") {
-        document.getElementById("vogalForm").style.display = "block";
-    } else if (escolha === "limites") {
-        document.getElementById("limitesForm").style.display = "block";
-    }
-}
-
-function ordenarNumeros() {
+function ordenar() {
     let numeros = [];
-    numeros.push(parseInt(document.getElementById("numero1").value));
-    numeros.push(parseInt(document.getElementById("numero2").value));
-    numeros.push(parseInt(document.getElementById("numero3").value));
+    numeros.push(parseInt(document.getElementById("num1").value));
+    numeros.push(parseInt(document.getElementById("num2").value));
+    numeros.push(parseInt(document.getElementById("num3").value));
 
     numeros.sort((a, b) => a - b);
 
-    document.getElementById("ordemResultado").innerHTML = "Números ordenados: " + numeros.join(", ");
+    document.getElementById("resultado4").innerHTML = "Números ordenados: " + numeros.join(", ");
 }
 
-function verificarPositivoNegativo() {
+function verificarSinal() {
     let x = parseInt(document.getElementById("numero").value);
     
     let isPositivo = x >= 0;
 
-    document.getElementById("positivoNegativoResultado").innerHTML = 
+    document.getElementById("resultado5").innerHTML = 
         isPositivo ? "O número é positivo." : "O número é negativo.";
 }
 
@@ -89,6 +67,6 @@ function verificarParImpar() {
     
     let isPar = (x % 2 === 0);
 
-    document.getElementById("parImparResultado").innerHTML = 
+    document.getElementById("resultado6").innerHTML = 
         isPar ? "O número é par." : "O número é ímpar.";
 }
